@@ -2,6 +2,8 @@
 
 # TensorCode: Machine Learning + Software Engineering + Runtime Introspection and Code Generation = Programming 2.0
 
+**Develop work has moved to the `develop` branch.**
+
 TensorCode is a framework that introduces simple abstractions and functions for encoding and decoding arbitrary python objects, differentiable programming (including differentiable control flow), and intelligent object creation / selection / other runtime code generation features. Rather than just think about the underlying mathematical objects, TensorCode's Programming 2.0 paradigm gives your brain the abstractions it needs to apply software engineering patterns including of encapsulation, abstraction, composition, design patterns, and derived concepts to your underlying problem. If you’re going multi-modal, building the next generation of end-to-end differentiable cognitive architectures, need to expose an intelligent API, or just adding magic to an existing program, TensorCode may fit right into your stack!
 
 ## Basics
@@ -36,7 +38,7 @@ TensorCode provides 5 approaches to convert differentiable codebases into `tenso
 1. by passing a `Callable` into the `Model` constructor's `fn` argument along with input and output annotations on either the Callable's signature or the `Model` constructor's `inputs` and `output` arguments. The constructor will then convert this into a `Model` by using the second approach.
 2. by writing a custom function that uses `Model` (with optional `context_name`) as a context manager. In addition to automatic saving, this approach is useful for isolating separate functionalities, as the operation-specific parameters are stored in that `Model` rather than the default model.
 3. by writing a custom function that calls `tensorcode.load` and `tensorcode.save` functions to load and save parameters at the begging and end of TensorCode-managed code respectively. (These functions call the default model's `load` and `save` methods.)
-4. by subclassing or annotating a function or class you want to isolate with `tensorcode.Model`. This approach automatically enters and exits contexts when the function or class is called. (It injects itself at the end of the class's __init__ method so it can wrap each method.)
+4. by subclassing or annotating a function or class you want to isolate with `tensorcode.Model`. This approach automatically enters and exits contexts when the function or class is called. (It injects itself at the end of the class's **init** method so it can wrap each method.)
 5. by initializing using keras-style primitives, which are the CapitalCase versions of their corresponding lowercase functions. These are useful for building models with a functional API.
 
 I need to clarify this: TensorCode supports two training paradigms:
